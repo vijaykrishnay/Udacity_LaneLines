@@ -77,6 +77,7 @@ class LaneFindingMain(LaneFindingAuto.LaneFindingTuning):
         
         vertices = np.array([[(x0, h), (x1a, y1a), (x1b, y1b), (x2, h)]], dtype=np.int32)
         ignore_mask_color = 255
+        print(vertices)
 
         mask = np.zeros_like(edges)
         cv2.fillPoly(mask, vertices, ignore_mask_color)
