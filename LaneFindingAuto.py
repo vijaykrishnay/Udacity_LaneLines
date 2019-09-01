@@ -31,8 +31,25 @@ class LaneFindingTuning ( wx.Frame ):
 		fgSizer1.SetFlexibleDirection( wx.BOTH )
 		fgSizer1.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
-		self.filePicker = wx.FilePickerCtrl( self.mainFrame, wx.ID_ANY, wx.EmptyString, u"Select a file", u"*.*", wx.DefaultPosition, wx.DefaultSize, wx.FLP_DEFAULT_STYLE )
-		fgSizer1.Add( self.filePicker, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+		bSizer9 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.dirPicker = wx.DirPickerCtrl( self.mainFrame, wx.ID_ANY, u"test_images", u"Select a folder", wx.DefaultPosition, wx.DefaultSize, wx.DIRP_DEFAULT_STYLE )
+		bSizer9.Add( self.dirPicker, 0, wx.ALL|wx.EXPAND, 5 )
+		
+		bSizer10 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		self.staticText_fileName = wx.StaticText( self.mainFrame, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.staticText_fileName.Wrap( -1 )
+		bSizer10.Add( self.staticText_fileName, 1, wx.ALL|wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
+		
+		self.button_next = wx.Button( self.mainFrame, wx.ID_ANY, u"Next", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer10.Add( self.button_next, 0, wx.ALL, 5 )
+		
+		
+		bSizer9.Add( bSizer10, 1, wx.EXPAND, 5 )
+		
+		
+		fgSizer1.Add( bSizer9, 1, wx.EXPAND, 5 )
 		
 		self.bitmap_original = wx.StaticBitmap( self.mainFrame, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer1.Add( self.bitmap_original, 0, wx.ALL, 5 )
@@ -47,10 +64,10 @@ class LaneFindingTuning ( wx.Frame ):
 		
 		bSizer4 = wx.BoxSizer( wx.VERTICAL )
 		
-		self.slider_gauss_x = wx.Slider( self.mainFrame, wx.ID_ANY, 1, 0, 99, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
+		self.slider_gauss_x = wx.Slider( self.mainFrame, wx.ID_ANY, 2, 0, 99, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		bSizer4.Add( self.slider_gauss_x, 0, wx.ALL, 5 )
 		
-		self.slider_gauss_y = wx.Slider( self.mainFrame, wx.ID_ANY, 1, 0, 99, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
+		self.slider_gauss_y = wx.Slider( self.mainFrame, wx.ID_ANY, 2, 0, 99, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		bSizer4.Add( self.slider_gauss_y, 0, wx.ALL, 5 )
 		
 		
@@ -75,7 +92,7 @@ class LaneFindingTuning ( wx.Frame ):
 		self.slider_canny_min = wx.Slider( self.mainFrame, wx.ID_ANY, 50, 1, 999, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		bSizer41.Add( self.slider_canny_min, 0, wx.ALL, 5 )
 		
-		self.slider_canny_max = wx.Slider( self.mainFrame, wx.ID_ANY, 150, 1, 999, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
+		self.slider_canny_max = wx.Slider( self.mainFrame, wx.ID_ANY, 180, 1, 999, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		bSizer41.Add( self.slider_canny_max, 0, wx.ALL, 5 )
 		
 		
@@ -106,26 +123,26 @@ class LaneFindingTuning ( wx.Frame ):
 		fgSizer3.SetFlexibleDirection( wx.BOTH )
 		fgSizer3.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 		
-		self.textCtrl_x0 = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.2", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.textCtrl_x0 = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.1", wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer3.Add( self.textCtrl_x0, 0, wx.ALL, 5 )
 		
 		self.m_staticText15 = wx.StaticText( self.mainFrame, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText15.Wrap( -1 )
 		fgSizer3.Add( self.m_staticText15, 0, wx.ALL, 5 )
 		
-		self.textCtrl_x1a = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.5", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.textCtrl_x1a = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.472", wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer3.Add( self.textCtrl_x1a, 0, wx.ALL, 5 )
 		
-		self.textCtrl_y1a = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.55", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.textCtrl_y1a = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.595", wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer3.Add( self.textCtrl_y1a, 0, wx.ALL, 5 )
 		
-		self.textCtrl_x1b = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.5", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.textCtrl_x1b = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.528", wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer3.Add( self.textCtrl_x1b, 0, wx.ALL, 5 )
 		
-		self.textCtrl_y1b = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.5", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.textCtrl_y1b = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.595", wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer3.Add( self.textCtrl_y1b, 0, wx.ALL, 5 )
 		
-		self.textCtrl_x2 = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.9", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.textCtrl_x2 = wx.TextCtrl( self.mainFrame, wx.ID_ANY, u"0.94", wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer3.Add( self.textCtrl_x2, 0, wx.ALL, 5 )
 		
 		self.m_button1 = wx.Button( self.mainFrame, wx.ID_ANY, u"Update", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -167,7 +184,7 @@ class LaneFindingTuning ( wx.Frame ):
 		
 		fgSizer4.Add( self.m_staticText9, 0, wx.ALL, 5 )
 		
-		self.slider_theta = wx.Slider( self.mainFrame, wx.ID_ANY, 31, 1, 1800, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
+		self.slider_theta = wx.Slider( self.mainFrame, wx.ID_ANY, 28, 1, 1800, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		fgSizer4.Add( self.slider_theta, 0, wx.ALL, 5 )
 		
 		self.m_staticText11 = wx.StaticText( self.mainFrame, wx.ID_ANY, u"Threshold", wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
@@ -176,7 +193,7 @@ class LaneFindingTuning ( wx.Frame ):
 		
 		fgSizer4.Add( self.m_staticText11, 0, wx.ALL, 5 )
 		
-		self.slider_threshold = wx.Slider( self.mainFrame, wx.ID_ANY, 10, 1, 100, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
+		self.slider_threshold = wx.Slider( self.mainFrame, wx.ID_ANY, 20, 1, 100, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		fgSizer4.Add( self.slider_threshold, 0, wx.ALL, 5 )
 		
 		self.m_staticText12 = wx.StaticText( self.mainFrame, wx.ID_ANY, u"Min. Line Length", wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
@@ -185,7 +202,7 @@ class LaneFindingTuning ( wx.Frame ):
 		
 		fgSizer4.Add( self.m_staticText12, 0, wx.ALL, 5 )
 		
-		self.slider_minLineLen = wx.Slider( self.mainFrame, wx.ID_ANY, 8, 1, 100, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
+		self.slider_minLineLen = wx.Slider( self.mainFrame, wx.ID_ANY, 45, 1, 100, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		fgSizer4.Add( self.slider_minLineLen, 0, wx.ALL, 5 )
 		
 		self.m_staticText13 = wx.StaticText( self.mainFrame, wx.ID_ANY, u"Max. Line Gap", wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
@@ -194,7 +211,7 @@ class LaneFindingTuning ( wx.Frame ):
 		
 		fgSizer4.Add( self.m_staticText13, 0, wx.ALL, 5 )
 		
-		self.slider_maxLineGap = wx.Slider( self.mainFrame, wx.ID_ANY, 10, 1, 100, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
+		self.slider_maxLineGap = wx.Slider( self.mainFrame, wx.ID_ANY, 45, 1, 100, wx.DefaultPosition, wx.DefaultSize, wx.SL_HORIZONTAL|wx.SL_LABELS )
 		fgSizer4.Add( self.slider_maxLineGap, 0, wx.ALL, 5 )
 		
 		
@@ -231,7 +248,8 @@ class LaneFindingTuning ( wx.Frame ):
 		self.Centre( wx.BOTH )
 		
 		# Connect Events
-		self.filePicker.Bind( wx.EVT_FILEPICKER_CHANGED, self.update_images )
+		self.dirPicker.Bind( wx.EVT_DIRPICKER_CHANGED, self.update_dir )
+		self.button_next.Bind( wx.EVT_BUTTON, self.next_image )
 		self.slider_gauss_x.Bind( wx.EVT_SCROLL_CHANGED, self.update_images )
 		self.slider_gauss_y.Bind( wx.EVT_SCROLL_CHANGED, self.update_images )
 		self.slider_canny_min.Bind( wx.EVT_SCROLL_CHANGED, self.update_images )
@@ -254,9 +272,14 @@ class LaneFindingTuning ( wx.Frame ):
 	
 	
 	# Virtual event handlers, overide them in your derived class
-	def update_images( self, event ):
+	def update_dir( self, event ):
 		event.Skip()
 	
+	def next_image( self, event ):
+		event.Skip()
+	
+	def update_images( self, event ):
+		event.Skip()
 	
 	
 	
