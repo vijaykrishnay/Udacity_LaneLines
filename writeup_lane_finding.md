@@ -46,9 +46,13 @@ My pipeline consisted of 7 steps:
 #### Step 6a: Detect lines using 'Hough Lines'
 - Identify lines using parameters below
 > rho=1
+
 > theta=2.8/180.
+
 > threshold=15
+
 > min_line_len=30
+
 > max_line_gap=30
 
 #### Step 6b: Merge left, right lanes lines
@@ -67,7 +71,9 @@ My pipeline consisted of 7 steps:
 
 ### 2. Identify potential shortcomings with your current pipeline
 a) Other line like markings on the road (e.g. tire marks from challenge video around 4 secs) can confuse the algorithm.
+
 b) Curved lanes are not detected very well.
+
 c) Lane detection will not work during lane changes due to region of interest masking.
 
 ### 3. Suggest possible improvements to your pipeline
